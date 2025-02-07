@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service;
 import com.energiasolar.solarapp.domain.Contractor;
 import com.energiasolar.solarapp.repository.ContractorRepository;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 @Service
@@ -17,8 +18,8 @@ public class ContractorService {
         this.repository = repository;
     }
 
-    public List<Contractor> findAll() {
-        return repository.findAll();
+    public Page<Contractor> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     public Optional<Contractor> findById(Long id) {
@@ -33,4 +34,3 @@ public class ContractorService {
         repository.deleteById(id);
     }
 }
-
